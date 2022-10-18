@@ -1,3 +1,4 @@
+# Task 1-2
 cook_book = {}
 dish_list = []
 with open('recipes.txt', 'rt', encoding='utf-8') as file:
@@ -14,7 +15,6 @@ with open('recipes.txt', 'rt', encoding='utf-8') as file:
             dish_list.append(dish)
         recipe = file.readline()
         cook_book.update(dish)
-# print(cook_book)
 
 def get_shop_list_by_dishes(dishes, person_count):
     shop_list = {}
@@ -25,4 +25,22 @@ def get_shop_list_by_dishes(dishes, person_count):
                 dishes_list = {l['ingredient_name']: {'measure':l['measure'], 'quantity': person_c}}
                 shop_list.update(dishes_list)
         return shop_list
-# print(get_shop_list_by_dishes(['Запеченный картофель', 'Омлет'], 2))
+
+# Task 3
+import os
+
+text_dic = {}
+for file in os.listdir('files'):
+  with open(os.path.join('files', file), encoding='utf-8') as f:
+    mytext = f.readlines()
+    text2 = "".join(mytext)
+    len1 = len(mytext)
+    text_dic[file] = (f'{len1}\n{text2}\n')
+#print(text_dic)
+text_dic2 = {}
+for x in sorted(text_dic, key=text_dic.get):
+  text_dic2[x] = text_dic[x]
+text_dict = {}
+for key, value in text_dic2.items():
+  with open('all_files.txt', 'a', encoding='utf-8') as f:
+    f.writelines(f'{key}\n{value}\n')
