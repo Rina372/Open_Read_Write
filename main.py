@@ -1,9 +1,10 @@
 cook_book = {}
 dish_list = []
-with open('recipes.txt', 'w', encoding='utf-8') as file:
+with open('recipes.txt', 'rt', encoding='utf-8') as file:
     for l in file:
         dish_name = l.strip()
         ingredients_list = []
+        dish = {dish_name: ingredients_list}
         count = file.readline()
         for i in range(int(count)):
             dish = file.readline().strip().split(' | ')
